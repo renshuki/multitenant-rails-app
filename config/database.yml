@@ -1,0 +1,27 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
+development:
+  <<: *default
+  database: multitenant_development
+  username: postgres
+  password: postgres
+  host: localhost
+
+test:
+  <<: *default
+  database: multitenant_test
+  username: postgres
+  password: postgres
+  host: localhost
+
+
+production:
+  <<: *default
+  database: multitenant_production
+  username: multitenant
+  password: <%= ENV['MULTITENANT_DATABASE_PASSWORD'] %>
